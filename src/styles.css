@@ -1,1 +1,11 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.bg-primary {
+  /* --mdb-bg-opacity: 1; */
+  background-color: #222121 !important;
+}
+.text-white {
+  --mdb-text-opacity: 1;
+  color: white!important;
+}
 /* You can add global styles to this file, and also import other style files */
