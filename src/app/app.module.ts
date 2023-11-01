@@ -23,8 +23,12 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertModule } from 'ngx-bootstrap/alert';
-// HttpClientModule
+
+// HttpClientModule for API calling
 import { HttpClientModule } from '@angular/common/http';
+
+// Toast Message
+import { ToastsContainer } from 'src/app/Shared/toast/toasts-container/toasts-container.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +51,7 @@ import { HttpClientModule } from '@angular/common/http';
     ModalModule.forRoot(),
     NgbModule,
     HttpClientModule,
+    ToastsContainer,
   ],
   providers: [],
   bootstrap: [AppComponent],

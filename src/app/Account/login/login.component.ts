@@ -1,34 +1,49 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/services/Authentication/auth.service';
 import { Router } from '@angular/router';
+import { LoginModel } from 'src/app/models/user.model';
+// Authentication API Service
+import { AuthService } from 'src/app/services/Authentication/auth.service';
+// Toast Message Service
+import { ToastService } from 'src/app/services/toast/toast.service';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  user = {
-    username: '',
-    password: '',
-  };
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toast: ToastService
+  ) {}
+  isButtonDisabled: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
-
+  loginModel: LoginModel = new LoginModel();
   onSubmit() {
-    alert('click');
-    this.authService.login(this.user.username, this.user.password).subscribe(
-      (response) => {
-        if (response.success) {
-          // Authentication successful, redirect to the home page
-          this.router.navigate(['/home']);
-        } else {
-          // Authentication failed, display an error message
+    this.isButtonDisabled = true;
+    this.authService.login(this.loginModel).subscribe({
+      next: (data: any) => {
+        if (data != null) {
+          if (data.statusString == 'Success') {
+            this.router.navigate(['user']);
+            this.toast.showSuccess('Login Success', 'User Login successfully');
+            this.loginModel = new LoginModel();
+          } else {
+            this.toast.showError('Login Error', data.message);
+          }
+          this.isButtonDisabled = false;
         }
       },
-      (error) => {
-        // Handle API error
-        console.error('API Error:', error);
-      }
-    );
+      error: (httpError: HttpErrorResponse) => {
+        const errorValue: any | null = httpError.error;
+        const errorCode: number = httpError.status;
+        if (errorValue.errors) {
+          var message = this.toast.getErrorMessage(errorValue.errors);
+          this.toast.showError('Login Error', message);
+        }
+        this.isButtonDisabled = false;
+      },
+    });
   }
 }

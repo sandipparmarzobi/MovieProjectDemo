@@ -1,71 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
-    />
-
-    <title>Login & Registration Form</title>
-  </head>
+<html lang="en" dir="ltr">
   <body>
     <div class="container">
-      <div class="forms">
-        <div class="form login">
-          <span class="title">Login</span>
-
+      <div class="title">Login to 'Movie World'</div>
+      <div class="row col-sm-12 content">
+        <div class="col-sm-12">
           <form (ngSubmit)="onSubmit()">
-            <div class="input-field">
-              <input
-                type="text"
-                [(ngModel)]="user.username"
-                name="username"
-                placeholder="Enter your email"
-                required
-              />
-              <i class="uil uil-envelope icon"></i>
-            </div>
-            <div class="input-field">
-              <input
-                [(ngModel)]="user.password"
-                type="password"
-                class="password"
-                name="password"
-                placeholder="Enter your password"
-                required
-              />
-              <i class="uil uil-lock icon"></i>
-              <i class="uil uil-eye-slash showHidePw"></i>
-            </div>
-
-            <div class="checkbox-text">
-              <div class="checkbox-content">
-                <input type="checkbox" id="logCheck" />
-                <label for="logCheck" class="text">Remember me</label>
+            <div class="user-details">
+              <div class="input-box">
+                <span class="details">Email</span>
+                <input
+                  type="text"
+                  [(ngModel)]="loginModel.Email"
+                  name="Email"
+                  placeholder="Enter your email"
+                  required
+                />
               </div>
-
-              <a href="#" class="text">Forgot password?</a>
+              <div class="input-box">
+                <span class="details">Password</span>
+                <input
+                  [(ngModel)]="loginModel.Password"
+                  type="password"
+                  name="Password"
+                  placeholder="Enter your password"
+                  required
+                />
+              </div>
             </div>
 
-            <div class="input-field button">
-              <input type="submit" value="Login" />
+            <div class="button">
+              <input
+                [disabled]="isButtonDisabled"
+                type="submit"
+                value="Login"
+              />
             </div>
           </form>
-
           <div class="login-signup">
             <span class="text"
               >Not a member?
-              <a class="text signup-link" [routerLink]="['/register']"
-                >Signup Now</a
+              <a class="text signup-link" [routerLink]="['/register']">
+                Signup Now</a
               >
             </span>
           </div>
         </div>
+        <div class="col-sm-6"></div>
+        <!-- ngNativeValidate -->
       </div>
     </div>
+    <!-- <img src="assets/movie.jpeg" alt="A beautiful image" /> -->
   </body>
 </html>

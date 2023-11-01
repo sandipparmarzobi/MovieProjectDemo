@@ -1,4 +1,12 @@
 import { Component } from '@angular/core';
+import { UserRegisterModel } from 'src/app/models/user.model';
+// Authentication API Service
+import { AuthService } from 'src/app/services/Authentication/auth.service';
+// Toast Message Service
+import { ToastService } from 'src/app/services/toast/toast.service';
+import { HttpErrorResponse } from '@angular/common/http';
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -6,12 +14,39 @@ import { Component } from '@angular/core';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  email: string = ''; // Example property
-  password: string = ''; // Declare the 'password' property
+  constructor(
+    private authService: AuthService,
+    private toast: ToastService,
+    private router: Router
+  ) {}
+  isButtonDisabled: boolean = false;
+  userRegisterModel: UserRegisterModel = new UserRegisterModel();
 
-  onRegister() {
-    // Handle form submission here
-    console.log('Email:', this.email);
-    console.log('Password:', this.password);
+  onSubmit() {
+    this.isButtonDisabled = true;
+    this.authService.register(this.userRegisterModel).subscribe({
+      next: (data: any) => {
+        if (data != null) {
+          if (data.statusString == 'Success') {
+            this.toast.showSuccess('Register', 'Register successfully');
+            this.userRegisterModel = new UserRegisterModel();
+            this.router.navigate(['login']);
+          } else {
+            this.toast.showError('Registration Error', data.message);
+          }
+        }
+        this.isButtonDisabled = false;
+      },
+      error: (httpError: HttpErrorResponse) => {
+        // any API error handling logic goes here (e.g. for http codes 4xx and 5xx)
+        const errorValue: any | null = httpError.error;
+        const errorCode: number = httpError.status;
+        if (errorValue.errors) {
+          var message = this.toast.getErrorMessage(errorValue.errors);
+          this.toast.showError('Registration Error', message);
+        }
+        this.isButtonDisabled = false;
+      },
+    });
   }
 }
