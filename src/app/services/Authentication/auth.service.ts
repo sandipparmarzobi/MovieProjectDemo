@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginModel, UserRegisterModel } from 'src/app/models/user.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private route: Router) {}
 
   private jwtHelper = new JwtHelperService();
   login(loginModel: LoginModel): Observable<any> {
@@ -46,18 +47,40 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
+    debugger;
     const token = localStorage.getItem('user'); // Change this to your token key
     return !this.jwtHelper.isTokenExpired(token);
   }
 
+  isAdmin(): boolean {
+    debugger;
+    if (this.isAuthenticated()) {
+      const userRole = this.getUserRole();
+      if (userRole?.toLowerCase() === 'admin') {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return false;
+  }
+
   getUserRole(): string | null {
-    const token = localStorage.getItem('access_token'); // Change this to your token key
+    debugger;
+    const token = localStorage.getItem('user'); // Change this to your token key
 
     if (token) {
       const tokenPayload = this.jwtHelper.decodeToken(token);
 
       // Assuming the user role is stored in a field called 'role' in the token payload.
-      return tokenPayload && tokenPayload.role ? tokenPayload.role : null;
+      return tokenPayload &&
+        tokenPayload[
+          'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+        ]
+        ? tokenPayload[
+            'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+          ]
+        : null;
     }
 
     return null;

@@ -17,7 +17,11 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/']">Movie Listing</a>
         </li>
-        <li ngbDropdown class="nav-item">
+        <li
+          ngbDropdown
+          class="nav-item"
+          *ngIf="IsLoggedIn && authService.isAdmin()"
+        >
           <a
             class="nav-link"
             id="navbarDropdownMenuAvatar"
@@ -40,7 +44,11 @@
             </li>
           </ul>
         </li>
-        <li ngbDropdown class="nav-item">
+        <li
+          ngbDropdown
+          class="nav-item"
+          *ngIf="IsLoggedIn && authService.isAdmin()"
+        >
           <a
             class="nav-link"
             id="navbarDropdownMenuAvatar"
@@ -63,7 +71,38 @@
             </li>
           </ul>
         </li>
-        <li ngbDropdown class="nav-item">
+        <li
+          ngbDropdown
+          class="nav-item"
+          *ngIf="IsLoggedIn && authService.isAdmin()"
+        >
+          <a
+            class="nav-link"
+            id="navbarDropdownMenuAvatar"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+            ngbDropdownToggle
+          >
+            ShowTime
+          </a>
+          <ul
+            ngbDropdownMenu="navbarDropdownMenuAvatar"
+            class="dropdown-menu dropdown-menu-end"
+          >
+            <li>
+              <a class="dropdown-item" href="#">Add ShowTime</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">View ShowTime</a>
+            </li>
+          </ul>
+        </li>
+        <li
+          ngbDropdown
+          class="nav-item"
+          *ngIf="IsLoggedIn && authService.isAdmin()"
+        >
           <a
             class="nav-link"
             id="navbarDropdownMenuAvatar"
@@ -109,7 +148,11 @@
             </li>
           </ul>
         </li>
-        <li ngbDropdown class="nav-item">
+        <li
+          ngbDropdown
+          class="nav-item"
+          *ngIf="IsLoggedIn && authService.isAdmin()"
+        >
           <a
             class="nav-link"
             id="navbarDropdownMenuAvatar"
@@ -133,26 +176,32 @@
           </ul>
         </li>
       </ul>
+      <!-- Left links -->
     </div>
 
     <div
       class="collapse navbar-collapse"
       style="float: right; max-width: max-content; padding-right: 15px"
       id="navbarSupportedContent"
+      *ngIf="!IsLoggedIn"
     >
-      <!-- Left links -->
       <ul class="navbar-nav ml-auto mb-2 mb-lg-0" *ngIf="!IsLoggedIn">
         <li class="nav-item">
           <a class="nav-link" (click)="openLoginModal(LoginTemplate)">Login</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" (click)="openRegisterModal(RegisterTemplate)"
-            >Register</a
-          >
-        </li>
       </ul>
+      <div class="d-flex align-items-center">
+        <button
+          type="button"
+          (click)="openRegisterModal(RegisterTemplate)"
+          class="btn btn-primary me-3"
+        >
+          Sign up for free
+        </button>
+      </div>
     </div>
-    <div ngbDropdown class="dropdown">
+
+    <div ngbDropdown class="dropdown" *ngIf="IsLoggedIn">
       <a
         class="d-flex align-items-center hidden-arrow"
         id="navbarDropdownMenuAvatar"

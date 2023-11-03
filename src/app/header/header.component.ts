@@ -4,7 +4,6 @@ import { ModalService } from 'src/app/services/model/modal.service';
 import { LoginModel, UserRegisterModel } from '../models/user.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../services/Authentication/auth.service';
-import { Router } from '@angular/router';
 import { ToastService } from '../services/toast/toast.service';
 import { CommonService } from '../services/common/common.service';
 declare var $: any; // Declare jQuery to be available in your component
@@ -16,8 +15,7 @@ declare var $: any; // Declare jQuery to be available in your component
 })
 export class HeaderComponent implements OnInit {
   constructor(
-    private authService: AuthService,
-    private router: Router,
+    public authService: AuthService,
     private toast: ToastService,
     private common: CommonService,
     public modalService: ModalService
@@ -58,7 +56,7 @@ export class HeaderComponent implements OnInit {
       next: (data: any) => {
         if (data != null) {
           if (data.statusString == 'Success') {
-            this.toast.showSuccess('Login Success', 'User Login successfully');
+            this.toast.showSuccess('Success', 'User Login successfully');
             localStorage.setItem('user', JSON.stringify(data.data));
             this.loginModel = new LoginModel();
             this.modalService.closeModal();
@@ -87,7 +85,7 @@ export class HeaderComponent implements OnInit {
       next: (data: any) => {
         if (data != null) {
           if (data.statusString == 'Success') {
-            this.toast.showSuccess('Register', 'Register successfully');
+            this.toast.showSuccess('Success', 'User Registered successfully');
             this.userRegisterModel = new UserRegisterModel();
             this.modalService.closeModal();
           } else {
