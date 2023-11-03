@@ -1,82 +1,79 @@
-<body>
-  <div class="container">
-    <div class="title">Registration in 'Movie World'</div>
-    <div class="content">
-      <!-- ngNativeValidate -->
-      <form (ngSubmit)="onSubmit()">
-        <div class="user-details">
-          <div class="input-box">
-            <span class="details">Full Name</span>
-            <input
-              type="text"
-              [(ngModel)]="userRegisterModel.FullName"
-              name="FullName"
-              placeholder="Enter your name"
-              required
-            />
-          </div>
-          <div class="input-box">
-            <span class="details">Username</span>
-            <input
-              type="text"
-              [(ngModel)]="userRegisterModel.Username"
-              name="Username"
-              placeholder="Enter your username"
-              required
-            />
-          </div>
-          <div class="input-box">
-            <span class="details">Email</span>
-            <input
-              type="text"
-              [(ngModel)]="userRegisterModel.Email"
-              name="Email"
-              placeholder="Enter your email"
-              required
-            />
-          </div>
-          <div class="input-box">
-            <span class="details">Phone Number</span>
-            <input
-              type="text"
-              [(ngModel)]="userRegisterModel.Phone"
-              name="Phone"
-              placeholder="Enter your number"
-              required
-            />
-          </div>
-          <div class="input-box">
-            <span class="details">Password</span>
-            <input
-              type="password"
-              [(ngModel)]="userRegisterModel.Password"
-              name="Password"
-              placeholder="Enter your password"
-              required
-            />
-          </div>
-          <div class="input-box">
-            <span class="details">Confirm Password</span>
-            <input
-              type="text"
-              [(ngModel)]="userRegisterModel.ConfirmPassword"
-              name="ConfirmPassword"
-              placeholder="Confirm your password"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="button">
-          <input type="submit" [disabled]="isButtonDisabled" value="Register" />
-        </div>
-      </form>
-      <div class="">
-        <span class="text"
-          >Already have account?
-          <a class="text signup-link" [routerLink]="['/login']"> Login Now</a>
-        </span>
+<div class="content">
+  <!-- ngNativeValidate -->
+  <form (ngSubmit)="onSubmit()">
+    <div class="user-details">
+      <div class="input-box">
+        <span class="details">Full Name</span>
+        <input
+          type="text"
+          [(ngModel)]="userRegisterModel.FullName"
+          name="FullName"
+          placeholder="Enter your name"
+          required
+        />
+      </div>
+      <div class="input-box">
+        <span class="details">Username</span>
+        <input
+          type="text"
+          [(ngModel)]="userRegisterModel.Username"
+          name="Username"
+          placeholder="Enter your username"
+          required
+        />
+      </div>
+      <div class="input-box">
+        <span class="details">Email</span>
+        <input
+          type="text"
+          [(ngModel)]="userRegisterModel.Email"
+          name="Email"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+      <div class="input-box">
+        <span class="details">Phone Number</span>
+        <input
+          type="text"
+          [(ngModel)]="userRegisterModel.Phone"
+          name="Phone"
+          placeholder="Enter your number"
+          required
+        />
+      </div>
+      <div class="input-box">
+        <span class="details">Password</span>
+        <input
+          type="password"
+          [(ngModel)]="userRegisterModel.Password"
+          name="Password"
+          placeholder="Enter your password"
+          required
+        />
+      </div>
+      <div class="input-box">
+        <span class="details">Confirm Password</span>
+        <input
+          type="text"
+          [(ngModel)]="userRegisterModel.ConfirmPassword"
+          name="ConfirmPassword"
+          placeholder="Confirm your password"
+          required
+        />
       </div>
     </div>
+
+    <div class="button">
+      <input type="submit" [disabled]="isButtonDisabled" value="Register" />
+    </div>
+  </form>
+  <div class="">
+    <span class="text"
+      >Already have account?
+      <a class="text signup-link" (click)="openLoginModal(LoginTemplate)">
+        Login Now</a
+      >
+    </span>
   </div>
-</body>
+</div>

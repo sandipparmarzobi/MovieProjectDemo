@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -29,6 +29,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 // Toast Message
 import { ToastsContainer } from 'src/app/Shared/toast/toasts-container/toasts-container.component';
+// Angular Jwt Module
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token'); // Change this to your token key
+}
 
 @NgModule({
   declarations: [
@@ -52,6 +58,13 @@ import { ToastsContainer } from 'src/app/Shared/toast/toasts-container/toasts-co
     NgbModule,
     HttpClientModule,
     ToastsContainer,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['http://localhost:5084'], // Replace with your API domain
+        disallowedRoutes: ['http://localhost:5084'], // Replace with your login route
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

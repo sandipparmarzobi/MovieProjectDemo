@@ -1,9 +1,4 @@
-<app-header
-  *ngIf="(layoutService.getLayout() | async) !== 'login'"
-></app-header>
-
+<app-header></app-header>
 <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
 <router-outlet></router-outlet>
-<app-footer
-  *ngIf="(layoutService.getLayout() | async) !== 'login'"
-></app-footer>
+<app-footer></app-footer>

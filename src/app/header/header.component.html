@@ -15,7 +15,122 @@
           <a class="nav-link" [routerLink]="['/']">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/']">Movies</a>
+          <a class="nav-link" [routerLink]="['/']">Movie Listing</a>
+        </li>
+        <li ngbDropdown class="nav-item">
+          <a
+            class="nav-link"
+            id="navbarDropdownMenuAvatar"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+            ngbDropdownToggle
+          >
+            Movie
+          </a>
+          <ul
+            ngbDropdownMenu="navbarDropdownMenuAvatar"
+            class="dropdown-menu dropdown-menu-end"
+          >
+            <li>
+              <a class="dropdown-item" href="#">Add Movie</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">View Movies</a>
+            </li>
+          </ul>
+        </li>
+        <li ngbDropdown class="nav-item">
+          <a
+            class="nav-link"
+            id="navbarDropdownMenuAvatar"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+            ngbDropdownToggle
+          >
+            Theater
+          </a>
+          <ul
+            ngbDropdownMenu="navbarDropdownMenuAvatar"
+            class="dropdown-menu dropdown-menu-end"
+          >
+            <li>
+              <a class="dropdown-item" href="#">Add Theater</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Assign Movie</a>
+            </li>
+          </ul>
+        </li>
+        <li ngbDropdown class="nav-item">
+          <a
+            class="nav-link"
+            id="navbarDropdownMenuAvatar"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+            ngbDropdownToggle
+          >
+            Users
+          </a>
+          <ul
+            ngbDropdownMenu="navbarDropdownMenuAvatar"
+            class="dropdown-menu dropdown-menu-end"
+          >
+            <li>
+              <a class="dropdown-item" href="#">Add User</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">View User</a>
+            </li>
+          </ul>
+        </li>
+        <li ngbDropdown class="nav-item">
+          <a
+            class="nav-link"
+            id="navbarDropdownMenuAvatar"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+            ngbDropdownToggle
+          >
+            Booking
+          </a>
+          <ul
+            ngbDropdownMenu="navbarDropdownMenuAvatar"
+            class="dropdown-menu dropdown-menu-end"
+          >
+            <li>
+              <a class="dropdown-item" href="#">Add Booking</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">View Booking</a>
+            </li>
+          </ul>
+        </li>
+        <li ngbDropdown class="nav-item">
+          <a
+            class="nav-link"
+            id="navbarDropdownMenuAvatar"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+            ngbDropdownToggle
+          >
+            Reviews
+          </a>
+          <ul
+            ngbDropdownMenu="navbarDropdownMenuAvatar"
+            class="dropdown-menu dropdown-menu-end"
+          >
+            <li>
+              <a class="dropdown-item" href="#">Add Reviews</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">View Reviews</a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
@@ -26,12 +141,14 @@
       id="navbarSupportedContent"
     >
       <!-- Left links -->
-      <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0" *ngIf="!IsLoggedIn">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/login']">Login</a>
+          <a class="nav-link" (click)="openLoginModal(LoginTemplate)">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/register']">Register</a>
+          <a class="nav-link" (click)="openRegisterModal(RegisterTemplate)"
+            >Register</a
+          >
         </li>
       </ul>
     </div>
@@ -60,40 +177,183 @@
           <a class="dropdown-item" href="#">My Profile</a>
         </li>
         <li>
-          <a class="dropdown-item" [routerLink]="['/login']">Logout</a>
+          <a class="dropdown-item" href="#">Change Password</a>
+        </li>
+        <li>
+          <a class="dropdown-item" (click)="onLogout()">Logout</a>
         </li>
       </ul>
     </div>
   </div>
   <!-- Container wrapper -->
 </nav>
-<!-- Navbar -->
 
-<!-- Add the modal code within your component's HTML template -->
-<div class="modal" id="myModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal Title</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
+<!-- Login Modal -->
+<ng-template #LoginTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Login</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalService.closeModal(1)"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="container">
+    <div class="row col-sm-12 content">
+      <form (ngSubmit)="onLogin()">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input
+              type="text"
+              [(ngModel)]="loginModel.Email"
+              name="Email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input
+              [(ngModel)]="loginModel.Password"
+              type="password"
+              name="Password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="button">
+          <input
+            [disabled]="isLoginButtonDisabled"
+            type="submit"
+            value="Login"
+          />
+        </div>
+      </form>
+      <div class="login-signup">
+        <span class="text"
+          >Not a member?
+          <a
+            class="text signup-link"
+            (click)="openRegisterModalWithCloseLoginModal(RegisterTemplate)"
+          >
+            Signup Now</a
+          >
+        </span>
       </div>
-      <div class="modal-body">
-        <!-- Modal content goes here -->
-        <p>This is the modal content.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Close
-        </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      <!-- ngNativeValidate -->
     </div>
   </div>
-</div>
+
+  <!-- <app-login></app-login> -->
+</ng-template>
+
+<!-- Register Modal -->
+<ng-template #RegisterTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Registration</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalService.closeModal(2)"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="content">
+      <!-- ngNativeValidate -->
+      <form (ngSubmit)="onRegister()">
+        <div class="user-details user-register-details">
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input
+              type="text"
+              [(ngModel)]="userRegisterModel.FullName"
+              name="FullName"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input
+              type="text"
+              [(ngModel)]="userRegisterModel.Username"
+              name="Username"
+              placeholder="Enter your username"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input
+              type="text"
+              [(ngModel)]="userRegisterModel.Email"
+              name="Email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input
+              type="text"
+              [(ngModel)]="userRegisterModel.Phone"
+              name="Phone"
+              placeholder="Enter your number"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input
+              type="password"
+              [(ngModel)]="userRegisterModel.Password"
+              name="Password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input
+              type="text"
+              [(ngModel)]="userRegisterModel.ConfirmPassword"
+              name="ConfirmPassword"
+              placeholder="Confirm your password"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="button">
+          <input
+            type="submit"
+            [disabled]="isRegisterButtonDisabled"
+            value="Register"
+          />
+        </div>
+      </form>
+      <div class="">
+        <span class="text"
+          >Already have account?
+          <a
+            class="text signup-link"
+            (click)="openLoginModalWithCloseRegisterModal(LoginTemplate)"
+          >
+            Login Now</a
+          >
+        </span>
+      </div>
+    </div>
+
+    <!-- <app-register></app-register> -->
+  </div>
+</ng-template>

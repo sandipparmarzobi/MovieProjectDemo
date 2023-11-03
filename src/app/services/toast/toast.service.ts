@@ -3,7 +3,6 @@ import { Injectable, TemplateRef } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class ToastService {
   toasts: any[] = [];
-
   show(
     header: string,
     textOrTpl: string | TemplateRef<any>,
@@ -33,16 +32,5 @@ export class ToastService {
       delay: 10000,
       autohide: true,
     });
-  }
-
-  getErrorMessage(errorObj: any): string {
-    let errorMessage = '';
-    Object.keys(errorObj).forEach((key) => {
-      const errors = errorObj[key];
-      errorMessage += `<b>${key}</b>: `;
-      errorMessage += errors.join(', ').replace('.', ' ');
-      errorMessage += '<br>';
-    });
-    return errorMessage;
   }
 }

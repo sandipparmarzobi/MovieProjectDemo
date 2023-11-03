@@ -1,55 +1,44 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <body>
-    <div class="container">
-      <div class="title">Login to 'Movie World'</div>
-      <div class="row col-sm-12 content">
-        <div class="col-sm-12">
-          <form (ngSubmit)="onSubmit()">
-            <div class="user-details">
-              <div class="input-box">
-                <span class="details">Email</span>
-                <input
-                  type="text"
-                  [(ngModel)]="loginModel.Email"
-                  name="Email"
-                  placeholder="Enter your email"
-                  required
-                />
-              </div>
-              <div class="input-box">
-                <span class="details">Password</span>
-                <input
-                  [(ngModel)]="loginModel.Password"
-                  type="password"
-                  name="Password"
-                  placeholder="Enter your password"
-                  required
-                />
-              </div>
-            </div>
-
-            <div class="button">
-              <input
-                [disabled]="isButtonDisabled"
-                type="submit"
-                value="Login"
-              />
-            </div>
-          </form>
-          <div class="login-signup">
-            <span class="text"
-              >Not a member?
-              <a class="text signup-link" [routerLink]="['/register']">
-                Signup Now</a
-              >
-            </span>
-          </div>
+<div class="container">
+  <div class="row col-sm-12 content">
+    <form (ngSubmit)="onSubmit()">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details">Email</span>
+          <input
+            type="text"
+            [(ngModel)]="loginModel.Email"
+            name="Email"
+            placeholder="Enter your email"
+            required
+          />
         </div>
-        <div class="col-sm-6"></div>
-        <!-- ngNativeValidate -->
+        <div class="input-box">
+          <span class="details">Password</span>
+          <input
+            [(ngModel)]="loginModel.Password"
+            type="password"
+            name="Password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
       </div>
+
+      <div class="button">
+        <input [disabled]="isButtonDisabled" type="submit" value="Login" />
+      </div>
+    </form>
+    <div class="login-signup">
+      <span class="text"
+        >Not a member?
+        <a
+          class="text signup-link"
+          (click)="openRegisterModal(RegisterTemplate)"
+        >
+          Signup Now</a
+        >
+      </span>
     </div>
-    <!-- <img src="assets/movie.jpeg" alt="A beautiful image" /> -->
-  </body>
-</html>
+    <!-- ngNativeValidate -->
+  </div>
+</div>
