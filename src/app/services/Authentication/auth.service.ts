@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   constructor(private http: HttpClient, private route: Router) {}
-
   private jwtHelper = new JwtHelperService();
   login(loginModel: LoginModel): Observable<any> {
     debugger;
@@ -79,6 +78,27 @@ export class AuthService {
         ]
         ? tokenPayload[
             'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+          ]
+        : null;
+    }
+
+    return null;
+  }
+
+  getUserName(): string | null {
+    debugger;
+    const token = localStorage.getItem('user'); // Change this to your token key
+
+    if (token) {
+      const tokenPayload = this.jwtHelper.decodeToken(token);
+
+      // Assuming the user role is stored in a field called 'role' in the token payload.
+      return tokenPayload &&
+        tokenPayload[
+          'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
+        ]
+        ? tokenPayload[
+            'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
           ]
         : null;
     }

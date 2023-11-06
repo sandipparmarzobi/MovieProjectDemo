@@ -29,12 +29,7 @@ export class HeaderComponent implements OnInit {
   userRegisterModel: UserRegisterModel = new UserRegisterModel();
 
   ngOnInit(): void {
-    var currentUser = window.localStorage.getItem('user');
-    if (currentUser == null) {
-      this.IsLoggedIn = false;
-    } else {
-      this.IsLoggedIn = true;
-    }
+    this.IsLoggedIn = this.authService.isAuthenticated();
   }
 
   openLoginModal(loginTemplate: TemplateRef<any>) {

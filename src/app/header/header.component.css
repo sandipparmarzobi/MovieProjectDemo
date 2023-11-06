@@ -12,6 +12,9 @@
   border-bottom: 1px solid #ccc;
 }
 
+.toggle::after {
+  content: none;
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
@@ -161,4 +164,8 @@ form .user-details .input-box{
   border: 1px solid #ccc;
   border-bottom-width: 2px;
   transition: all 0.3s ease;
+}
+
+.mydropdown::after {
+  content: none;
 }

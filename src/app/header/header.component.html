@@ -125,6 +125,33 @@
             </li>
           </ul>
         </li>
+        <li
+          ngbDropdown
+          class="nav-item"
+          *ngIf="IsLoggedIn && authService.isAdmin()"
+        >
+          <a
+            class="nav-link"
+            id="navbarDropdownMenuAvatar"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+            ngbDropdownToggle
+          >
+            Role
+          </a>
+          <ul
+            ngbDropdownMenu="navbarDropdownMenuAvatar"
+            class="dropdown-menu dropdown-menu-end"
+          >
+            <li>
+              <a class="dropdown-item" href="#">Add Role</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">View Role</a>
+            </li>
+          </ul>
+        </li>
         <li ngbDropdown class="nav-item">
           <a
             class="nav-link"
@@ -185,7 +212,7 @@
       id="navbarSupportedContent"
       *ngIf="!IsLoggedIn"
     >
-      <ul class="navbar-nav ml-auto mb-2 mb-lg-0" *ngIf="!IsLoggedIn">
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link" (click)="openLoginModal(LoginTemplate)">Login</a>
         </li>
@@ -202,34 +229,45 @@
     </div>
 
     <div ngbDropdown class="dropdown" *ngIf="IsLoggedIn">
-      <a
-        class="d-flex align-items-center hidden-arrow"
-        id="navbarDropdownMenuAvatar"
-        role="button"
-        data-mdb-toggle="dropdown"
-        aria-expanded="false"
-        ngbDropdownToggle
-      >
-        <img
-          src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-          class="rounded-circle"
-          height="25"
-          alt="Black and White Portrait of a Man"
-          loading="lazy"
-        />
-      </a>
-      <ul
-        ngbDropdownMenu="navbarDropdownMenuAvatar"
-        class="dropdown-menu dropdown-menu-end"
-      >
-        <li>
-          <a class="dropdown-item" href="#">My Profile</a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="#">Change Password</a>
-        </li>
-        <li>
-          <a class="dropdown-item" (click)="onLogout()">Logout</a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li ngbDropdown class="nav-item">
+          <a
+            class="nav-link"
+            id="navbarDropdownMenuAvatar"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+            ngbDropdownToggle
+          >
+            <span *ngIf="IsLoggedIn && authService.isAdmin()">
+              Hi {{ authService.getUserName() }}</span
+            >
+            <span *ngIf="IsLoggedIn && !authService.isAdmin()">
+              Hi {{ authService.getUserName() }}</span
+            >
+            &nbsp;
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+              class="rounded-circle"
+              height="25"
+              alt="Black and White Portrait of a Man"
+              loading="lazy"
+            />
+          </a>
+          <ul
+            ngbDropdownMenu="navbarDropdownMenuAvatar"
+            class="dropdown-menu dropdown-menu-end"
+          >
+            <li>
+              <a class="dropdown-item" href="#">My Profile</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Change Password</a>
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="onLogout()">Logout</a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
