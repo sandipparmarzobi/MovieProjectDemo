@@ -232,7 +232,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li ngbDropdown class="nav-item">
           <a
-            class="nav-link"
+            class="nav-link mydropdown"
             id="navbarDropdownMenuAvatar"
             role="button"
             data-mdb-toggle="dropdown"
@@ -259,7 +259,11 @@
             class="dropdown-menu dropdown-menu-end"
           >
             <li>
-              <a class="dropdown-item" href="#">My Profile</a>
+              <a
+                class="dropdown-item"
+                (click)="openLoginModal(MyProfileTemplate)"
+                >My Profile</a
+              >
             </li>
             <li>
               <a class="dropdown-item" href="#">Change Password</a>
@@ -442,5 +446,23 @@
     </div>
 
     <!-- <app-register></app-register> -->
+  </div>
+</ng-template>
+
+<!-- Register Modal -->
+<ng-template #MyProfileTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">My Profile</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalService.closeModal()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-my-profile></app-my-profile>
   </div>
 </ng-template>

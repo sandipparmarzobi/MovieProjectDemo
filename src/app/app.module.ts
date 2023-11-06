@@ -31,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastsContainer } from 'src/app/Shared/toast/toasts-container/toasts-container.component';
 // Angular Jwt Module
 import { JwtModule } from '@auth0/angular-jwt';
+import { MyProfileComponent } from './Account/my-profile/my-profile.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token'); // Change this to your token key
@@ -46,6 +47,7 @@ export function tokenGetter() {
     LoginLayoutComponent,
     HeaderComponent,
     FooterComponent,
+    MyProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,23 +1,18 @@
-#dropdown-menu {
-  display: none;
-  position: absolute;
-  background-color: #fff;
-  list-style: none;
-  padding: 0;
-  border: 1px solid #ccc;
-}
-
-#dropdown-menu li {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-.toggle::after {
-  content: none;
-}
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+body{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
 .container{
   max-width: 700px;
   width: 100%;
@@ -41,19 +36,15 @@
   border-radius: 5px;
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
-.content form .user-register-details{
+.content form .user-details{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 20px 0 12px 0;
 }
-form .user-register-details .input-box{
-  margin-bottom: 15px;
-  width: calc(100% / 2 - 20px);
-}
 form .user-details .input-box{
   margin-bottom: 15px;
-  /* width: calc(100% / 2 - 20px); */
+  width: calc(100% / 2 - 20px);
 }
 form .input-box span.details{
   display: block;
@@ -152,23 +143,4 @@ form .user-details .input-box{
   .container .content .category{
     flex-direction: column;
   }
-}
-
-.user-details .input-box input{
-  height: 45px;
-  width: 100%;
-  outline: none;
-  font-size: 16px;
-  border-radius: 5px;
-  padding-left: 15px;
-  border: 1px solid #ccc;
-  border-bottom-width: 2px;
-  transition: all 0.3s ease;
-}
-
-.mydropdown::after {
-  content: none;
-}
-.dropdown{
-  --bs-dropdown-link-active-bg : black I !important;
 }
