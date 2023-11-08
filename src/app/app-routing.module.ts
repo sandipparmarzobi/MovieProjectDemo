@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './Account/login/login.component';
 import { RegisterComponent } from './Account/register/register.component';
-
 import { UserHomeComponent } from './home/user-home/user-home.component';
 import { ViewComponent } from './movie/view/view.component';
 import { AddComponent } from './movie/add/add.component';
+import { AuthService } from './services/Authentication/auth.service';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent, data: { layout: 'login' } }, // Set the default route to the LoginComponent
-  { path: 'register', component: RegisterComponent, data: { layout: 'login' } }, // Add other routes as needed
-  { path: '', component: UserHomeComponent }, // Add other routes as needed
-  { path: 'view-movie', component: ViewComponent },
-  { path: 'add-movie', component: AddComponent }, // Add other routes as needed
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: '', component: UserHomeComponent },
+  { path: 'view-movie', component: ViewComponent, canActivate: [AuthService] },
+  { path: 'add-movie', component: AddComponent, canActivate: [AuthService] },
 ];
 
 @NgModule({

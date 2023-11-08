@@ -22,7 +22,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertModule } from 'ngx-bootstrap/alert';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 // HttpClientModule for API calling
 import { HttpClientModule } from '@angular/common/http';
 
@@ -34,6 +34,10 @@ import { MyProfileComponent } from './Account/my-profile/my-profile.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { AddComponent } from './movie/add/add.component';
 import { ViewComponent } from './movie/view/view.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 export function tokenGetter() {
   return localStorage.getItem('access_token'); // Change this to your token key
 }
@@ -60,8 +64,11 @@ export function tokenGetter() {
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     NgbModule,
+    BsDatepickerModule.forRoot(),
     HttpClientModule,
     ToastsContainer,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
     CarouselModule.forRoot(),
     JwtModule.forRoot({
       config: {

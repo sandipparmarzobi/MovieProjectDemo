@@ -3,7 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginModel, UserRegisterModel } from 'src/app/models/user.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Router } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  Router,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -50,7 +55,25 @@ export class AuthService {
     const token = localStorage.getItem('user'); // Change this to your token key
     return !this.jwtHelper.isTokenExpired(token);
   }
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    // Check if the user is authenticated (e.g., by checking if there is a valid token in local storage)
+    const isAuthenticated = this.isAuthenticated();
 
+    if (isAuthenticated) {
+      return true; // User is allowed to access the route
+    } else {
+      // User is not authenticated, redirect to the login page or another route
+      this.route.navigate(['/']);
+      return false;
+    }
+  }
   isAdmin(): boolean {
     debugger;
     if (this.isAuthenticated()) {

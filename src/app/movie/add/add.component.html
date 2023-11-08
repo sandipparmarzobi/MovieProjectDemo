@@ -75,12 +75,27 @@
             required
           />
         </div>
-        <input
-          type="file"
-          name="ImageFile"
-          [(ngModel)]="movieModel.ImageFile"
-          (change)="onFileChange($event)"
-        />
+        <div class="input-box">
+          <span class="details">Release Date</span>
+          <input
+            type="text"
+            placeholder="Select Release Date"
+            class="form-control"
+            bsDatepicker
+            [placement]="'top'"
+          />
+        </div>
+
+        <div class="input-box">
+          <span class="details">Movie Image</span>
+          <input
+            type="file"
+            name="ImageFile"
+            class="custom-file-input"
+            [(ngModel)]="movieModel.ImageFile"
+            (change)="onFileChange($event)"
+          />
+        </div>
       </div>
       <div class="button max-width">
         <input type="submit" value="Save" />
