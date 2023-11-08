@@ -1,0 +1,90 @@
+<div class="p-5">
+  <h3>Add Movie</h3>
+  <div class="content">
+    <!-- ngNativeValidate -->
+    <form (ngSubmit)="onSubmit()">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details">Title</span>
+          <input
+            type="text"
+            [(ngModel)]="movieModel.Title"
+            name="Title"
+            placeholder="Enter your movie title"
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Genre</span>
+          <select
+            class="form-control"
+            name="Genre"
+            [(ngModel)]="movieModel.Genre"
+          >
+            <option value="">Select Option</option>
+            <option value="Action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Drama">Drama</option>
+            <option value="ScienceFiction">ScienceFiction</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Horror">Horror</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Romance">Romance</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Animation">Animation</option>
+            <option value="War">War</option>
+            <option value="Documentary">Documentary</option>
+          </select>
+        </div>
+        <div class="input-box">
+          <span class="details">Description</span>
+          <input
+            name="Description"
+            [(ngModel)]="movieModel.Description"
+            type="text"
+            placeholder="Enter your Description"
+            required
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Duration</span>
+          <input
+            type="text"
+            name="Duration"
+            [(ngModel)]="movieModel.Duration"
+            placeholder="Enter your Duration"
+            required
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Director</span>
+          <input
+            type="text"
+            name="Director"
+            [(ngModel)]="movieModel.Director"
+            placeholder="Enter your Director"
+            required
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Trailer URL</span>
+          <input
+            type="text"
+            name="TrailerURL"
+            [(ngModel)]="movieModel.TrailerURL"
+            placeholder="Enter your TrailerURL"
+            required
+          />
+        </div>
+        <input
+          type="file"
+          name="ImageFile"
+          [(ngModel)]="movieModel.ImageFile"
+          (change)="onFileChange($event)"
+        />
+      </div>
+      <div class="button max-width">
+        <input type="submit" value="Save" />
+      </div>
+    </form>
+  </div>
+</div>

@@ -10,7 +10,6 @@ import { RegisterComponent } from './Account/register/register.component';
 
 // Home >> User And Admin
 import { UserHomeComponent } from './home/user-home/user-home.component';
-import { AdminHomeComponent } from './home/admin-home/admin-home.component';
 
 //  Header And Footer
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
@@ -32,7 +31,9 @@ import { ToastsContainer } from 'src/app/Shared/toast/toasts-container/toasts-co
 // Angular Jwt Module
 import { JwtModule } from '@auth0/angular-jwt';
 import { MyProfileComponent } from './Account/my-profile/my-profile.component';
-
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { AddComponent } from './movie/add/add.component';
+import { ViewComponent } from './movie/view/view.component';
 export function tokenGetter() {
   return localStorage.getItem('access_token'); // Change this to your token key
 }
@@ -43,11 +44,12 @@ export function tokenGetter() {
     LoginComponent,
     RegisterComponent,
     UserHomeComponent,
-    AdminHomeComponent,
     LoginLayoutComponent,
     HeaderComponent,
     FooterComponent,
     MyProfileComponent,
+    AddComponent,
+    ViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +62,7 @@ export function tokenGetter() {
     NgbModule,
     HttpClientModule,
     ToastsContainer,
+    CarouselModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

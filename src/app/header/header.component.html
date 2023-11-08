@@ -14,8 +14,25 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/']">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/']">Movie Listing</a>
+        <li ngbDropdown class="nav-item">
+          <a
+            class="nav-link"
+            id="navbarDropdownMenuAvatar"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+            ngbDropdownToggle
+          >
+            Booking
+          </a>
+          <ul
+            ngbDropdownMenu="navbarDropdownMenuAvatar"
+            class="dropdown-menu dropdown-menu-end"
+          >
+            <li>
+              <a class="dropdown-item" href="#">View Booking</a>
+            </li>
+          </ul>
         </li>
         <li
           ngbDropdown
@@ -37,10 +54,14 @@
             class="dropdown-menu dropdown-menu-end"
           >
             <li>
-              <a class="dropdown-item" href="#">Add Movie</a>
+              <a class="dropdown-item" [routerLink]="['/add-movie']"
+                >Add Movie</a
+              >
             </li>
             <li>
-              <a class="dropdown-item" href="#">View Movies</a>
+              <a class="dropdown-item" [routerLink]="['/view-movie']"
+                >View Movies</a
+              >
             </li>
           </ul>
         </li>
@@ -152,29 +173,6 @@
             </li>
           </ul>
         </li>
-        <li ngbDropdown class="nav-item">
-          <a
-            class="nav-link"
-            id="navbarDropdownMenuAvatar"
-            role="button"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-            ngbDropdownToggle
-          >
-            Booking
-          </a>
-          <ul
-            ngbDropdownMenu="navbarDropdownMenuAvatar"
-            class="dropdown-menu dropdown-menu-end"
-          >
-            <li>
-              <a class="dropdown-item" href="#">Add Booking</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">View Booking</a>
-            </li>
-          </ul>
-        </li>
         <li
           ngbDropdown
           class="nav-item"
@@ -214,7 +212,11 @@
     >
       <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" (click)="openLoginModal(LoginTemplate)">Login</a>
+          <a
+            class="nav-link cursor-pointer"
+            (click)="openLoginModal(LoginTemplate)"
+            >Login</a
+          >
         </li>
       </ul>
       <div class="d-flex align-items-center">
@@ -239,12 +241,7 @@
             aria-expanded="false"
             ngbDropdownToggle
           >
-            <span *ngIf="IsLoggedIn && authService.isAdmin()">
-              Hi {{ authService.getUserName() }}</span
-            >
-            <span *ngIf="IsLoggedIn && !authService.isAdmin()">
-              Hi {{ authService.getUserName() }}</span
-            >
+            <span *ngIf="IsLoggedIn"> Hi {{ authService.getUserName() }}</span>
             &nbsp;
             <img
               src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"

@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
         if (data != null) {
           if (data.statusString == 'Success') {
             this.toast.showSuccess('Success', 'User Login successfully');
-            localStorage.setItem('user', JSON.stringify(data.data));
+            localStorage.setItem('user', data.data);
             this.loginModel = new LoginModel();
             this.modalService.closeModal();
             this.IsLoggedIn = true;

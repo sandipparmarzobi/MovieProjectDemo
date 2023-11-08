@@ -1,0 +1,28 @@
+<form (ngSubmit)="onLogin()">
+  <div class="user-details">
+    <div class="input-box">
+      <span class="details">Email</span>
+      <input
+        type="text"
+        [(ngModel)]="loginModel.Email"
+        name="Email"
+        placeholder="Enter your email"
+        required
+      />
+    </div>
+    <div class="input-box">
+      <span class="details">Password</span>
+      <input
+        [(ngModel)]="loginModel.Password"
+        type="password"
+        name="Password"
+        placeholder="Enter your password"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="button">
+    <input [disabled]="isLoginButtonDisabled" type="submit" value="Login" />
+  </div>
+</form>

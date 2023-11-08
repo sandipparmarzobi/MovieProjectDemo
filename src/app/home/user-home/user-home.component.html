@@ -1,1 +1,96 @@
-<p>User Home</p>
+<br />
+<div>
+  <div class="sc-133848s-4 kFcBGr">
+    <div class="sc-133848s-3 sc-133848s-5 gXVNQI">
+      <div
+        class="sc-133848s-3 sc-133848s-10 dOuCBq"
+        style="padding: 0px 0px 32px"
+      >
+        <div class="sc-lnhrs7-0 ihaPEr">
+          <div class="sc-lnhrs7-1 gkaWgK">
+            <div class="sc-lnhrs7-4 dDgeSF">
+              <carousel>
+                <slide>
+                  <div>
+                    <a href="" id="" class=""
+                      ><div class="">
+                        <div class=""></div>
+                        <div
+                          width="100%"
+                          height="100%"
+                          data-content="Tiger 3"
+                          class=""
+                        >
+                          <div class="">
+                            <img
+                              id="js-promotion-banner"
+                              loading="lazy"
+                              onclick="handleBannerClick(event)"
+                              src="https://assets-in.bmscdn.com/promotions/cms/creatives/1697555347107_movies.jpg"
+                              alt="promotion-banner"
+                            />
+                          </div>
+                        </div></div
+                    ></a>
+                  </div>
+                </slide>
+              </carousel>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="sc-lnhrs7-0 ihaPEr">
+          <div class="sc-lnhrs7-1 gkaWgK">
+            <div class="sc-lnhrs7-4 dDgeSF">
+              <carousel
+                [itemsPerSlide]="3"
+                [singleSlideOffset]="true"
+                [noWrap]="true"
+              >
+                <slide *ngFor="let item of this.data">
+                  <div>
+                    <a href="" id="" class=""
+                      ><div class="">
+                        <div class=""></div>
+                        <div
+                          width="100%"
+                          height="100%"
+                          data-content="Tiger 3"
+                          class=""
+                        >
+                          <div class="">
+                            <img
+                              src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:oi-discovery-catalog@@icons@@like_202006280402.png,ox-24,oy-617,ow-29:ote-NDU1LjVLIExpa2Vz,ots-29,otc-FFFFFF,oy-612,ox-70:q-80/et00313411-dvmdcxgrrk-portrait.jpg"
+                              alt="Tiger 3"
+                              width="100%"
+                              height="100%"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          class="sc-133848s-3 cZuToi"
+                          style="margin: 4px 0px 0px; padding: 4px 0px 0px"
+                        >
+                          <div class="sc-133848s-2 sc-133848s-12 hxPdAO">
+                            <div class="sc-7o7nez-0 daKrZU">
+                              {{ item.title }}
+                            </div>
+                          </div>
+                          <div class="sc-133848s-2 sc-133848s-12 hxPdAO">
+                            <div class="sc-7o7nez-0 bJFVVN">
+                              {{ item.genre }}
+                            </div>
+                          </div>
+                        </div>
+                      </div></a
+                    >
+                  </div>
+                </slide>
+              </carousel>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
