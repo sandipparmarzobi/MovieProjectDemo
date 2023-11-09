@@ -14,7 +14,11 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/']">Home</a>
         </li>
-        <li ngbDropdown class="nav-item">
+        <li
+          ngbDropdown
+          class="nav-item"
+          *ngIf="IsLoggedIn && authService.isAdmin()"
+        >
           <a
             class="nav-link"
             id="navbarDropdownMenuAvatar"
@@ -23,17 +27,25 @@
             aria-expanded="false"
             ngbDropdownToggle
           >
-            Booking
+            Theater
           </a>
           <ul
             ngbDropdownMenu="navbarDropdownMenuAvatar"
             class="dropdown-menu dropdown-menu-end"
           >
             <li>
-              <a class="dropdown-item" href="#">View Booking</a>
+              <a class="dropdown-item" [routerLink]="['/add-theater']"
+                >Add Theater</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/view-theater']"
+                >View Theater</a
+              >
             </li>
           </ul>
         </li>
+
         <li
           ngbDropdown
           class="nav-item"
@@ -65,33 +77,7 @@
             </li>
           </ul>
         </li>
-        <li
-          ngbDropdown
-          class="nav-item"
-          *ngIf="IsLoggedIn && authService.isAdmin()"
-        >
-          <a
-            class="nav-link"
-            id="navbarDropdownMenuAvatar"
-            role="button"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-            ngbDropdownToggle
-          >
-            Theater
-          </a>
-          <ul
-            ngbDropdownMenu="navbarDropdownMenuAvatar"
-            class="dropdown-menu dropdown-menu-end"
-          >
-            <li>
-              <a class="dropdown-item" href="#">Add Theater</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Assign Movie</a>
-            </li>
-          </ul>
-        </li>
+
         <li
           ngbDropdown
           class="nav-item"
@@ -197,6 +183,26 @@
             </li>
             <li>
               <a class="dropdown-item" href="#">View Reviews</a>
+            </li>
+          </ul>
+        </li>
+        <li ngbDropdown class="nav-item">
+          <a
+            class="nav-link"
+            id="navbarDropdownMenuAvatar"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+            ngbDropdownToggle
+          >
+            Booking
+          </a>
+          <ul
+            ngbDropdownMenu="navbarDropdownMenuAvatar"
+            class="dropdown-menu dropdown-menu-end"
+          >
+            <li>
+              <a class="dropdown-item" href="#">View Booking</a>
             </li>
           </ul>
         </li>

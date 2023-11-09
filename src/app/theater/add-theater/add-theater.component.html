@@ -1,0 +1,41 @@
+<div class="p-5">
+  <h3>Add Theater</h3>
+  <div class="content">
+    <!-- ngNativeValidate -->
+    <form (ngSubmit)="onSubmit()">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details">Name</span>
+          <input
+            type="text"
+            [(ngModel)]="theaterModel.name"
+            name="name"
+            placeholder="Enter your theater name"
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Location</span>
+          <input
+            type="text"
+            [(ngModel)]="theaterModel.location"
+            name="location"
+            placeholder="Enter your theater location"
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Capacity</span>
+          <input
+            type="number"
+            [(ngModel)]="theaterModel.capacity"
+            name="capacity"
+            placeholder="Enter your theater capacity"
+          />
+        </div>
+      </div>
+      <div class="button max-width">
+        <input type="submit" value="Save" />
+      </div>
+    </form>
+  </div>
+</div>
+<app-view-theater></app-view-theater>

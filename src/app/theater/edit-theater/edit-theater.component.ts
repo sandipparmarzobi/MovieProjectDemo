@@ -1,19 +1,19 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { MovieModel } from 'src/app/models/movie.model';
-import { CommonService } from 'src/app/services/common/common.service';
-import { MovieService } from 'src/app/services/movie/movie.service';
-import { ToastService } from 'src/app/services/toast/toast.service';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TheaterModel } from 'src/app/models/theater.model';
+import { CommonService } from 'src/app/services/common/common.service';
+import { TheaterService } from 'src/app/services/theater/theater.service';
+import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
-  selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css'],
+  selector: 'app-edit-theater',
+  templateUrl: './edit-theater.component.html',
+  styleUrls: ['./edit-theater.component.css'],
 })
-export class EditComponent implements OnInit {
+export class EditTheaterComponent {
   constructor(
-    private movieService: MovieService,
+    private theaterService: TheaterService,
     private toast: ToastService,
     private common: CommonService,
     private route: ActivatedRoute,
@@ -21,7 +21,7 @@ export class EditComponent implements OnInit {
     private cd: ChangeDetectorRef
   ) {}
   id!: string;
-  movieModel!: MovieModel;
+  theaterModel!: TheaterModel;
   isButtonDisabled: boolean | undefined;
   data: any;
   ngOnInit(): void {
@@ -32,18 +32,12 @@ export class EditComponent implements OnInit {
     });
   }
 
-  onFileChange(event: any) {
-    const fileList: FileList = event.target.files;
-    if (fileList.length > 0) {
-      this.movieModel.imageFile = fileList[0];
-    }
-  }
   getMovieById(id: string) {
-    this.movieService.getMovieById(id).subscribe(
+    this.theaterService.getTheaterById(id).subscribe(
       (response) => {
         this.data = response;
         if (this.data) {
-          this.movieModel = this.data.data;
+          this.theaterModel = this.data.data;
           this.cd.detectChanges();
         }
       },
@@ -57,12 +51,12 @@ export class EditComponent implements OnInit {
   onUpdate() {
     debugger;
     this.isButtonDisabled = true;
-    this.movieService.updateMovie(this.id, this.movieModel).subscribe({
+    this.theaterService.updateTheater(this.id, this.theaterModel).subscribe({
       next: (data: any) => {
         if (data != null) {
           if (data.statusString == 'Success') {
             this.toast.showSuccess('Success', data.message);
-            this.router.navigate(['/view-movie']);
+            this.router.navigate(['/view-theater']);
           } else {
             this.toast.showError('Movie Error', data.message);
           }

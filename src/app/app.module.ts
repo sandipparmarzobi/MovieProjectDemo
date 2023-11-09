@@ -38,6 +38,9 @@ import { ViewComponent } from './movie/view/view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { EditComponent } from './movie/edit/edit.component';
+import { AddTheaterComponent } from './theater/add-theater/add-theater.component';
+import { ViewTheaterComponent } from './theater/view-theater/view-theater.component';
+import { EditTheaterComponent } from './theater/edit-theater/edit-theater.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token'); // Change this to your token key
@@ -56,6 +59,9 @@ export function tokenGetter() {
     AddComponent,
     ViewComponent,
     EditComponent,
+    AddTheaterComponent,
+    ViewTheaterComponent,
+    EditTheaterComponent,
   ],
   imports: [
     BrowserModule,

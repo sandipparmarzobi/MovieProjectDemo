@@ -8,4 +8,8 @@
   --mdb-text-opacity: 1;
   color: white!important;
 }
+.td-action i{
+  padding-right: 5px;
+  cursor: pointer;
+}
 /* You can add global styles to this file, and also import other style files */

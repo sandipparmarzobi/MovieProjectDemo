@@ -1,0 +1,25 @@
+<div class="p-5">
+  <h3>View Theater</h3>
+  <br />
+  <table class="table table-bordered table-responsive movieTable">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Location</th>
+        <th scope="col">Capacity</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{ item.name }}</td>
+        <td>{{ item.location }}</td>
+        <td>{{ item.capacity }}</td>
+        <td class="td-action">
+          <i class="fa fa-edit" [routerLink]="['/edit-theater', item.id]"></i>
+          <i class="fa fa-trash" (click)="deleteTheater(item.id)"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

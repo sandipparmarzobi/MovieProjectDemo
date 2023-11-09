@@ -33,7 +33,11 @@
         <td>{{ item.director }}</td>
         <td>{{ item.trailerURL }}</td>
         <td class="td-action">
-          <i class="fa fa-edit" [routerLink]="['/edit-movie', item.id]"></i>
+          <i
+            class="fa fa-edit"
+            tooltip="edit"
+            [routerLink]="['/edit-movie', item.id]"
+          ></i>
           <i class="fa fa-trash" (click)="deleteMovie(item.id)"></i>
         </td>
       </tr>

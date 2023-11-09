@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MovieModel } from 'src/app/models/user.model';
+import { MovieModel } from 'src/app/models/movie.model';
 
 @Injectable({
   providedIn: 'root',
@@ -61,14 +61,14 @@ export class MovieService {
       httpOptions
     );
   }
-  updateMovie(movie: MovieModel): Observable<any> {
+  updateMovie(id: string, movie: MovieModel): Observable<any> {
     debugger;
     const formData = new FormData();
     // Parse the date string into a JavaScript Date object
     const date = new Date(movie.releaseDate);
     const isoString = date.toISOString();
     // Append the movie data as form fields
-    formData.append('Id', movie.id);
+    formData.append('Id', id);
     formData.append('Title', movie.title);
     formData.append('Genre', movie.genre);
     formData.append('Description', movie.description);
@@ -88,7 +88,7 @@ export class MovieService {
       }),
     };
     return this.http.put(
-      'http://localhost:5084/api/Movie/Update?id=' + movie.id,
+      'http://localhost:5084/api/Movie/Update?id=' + id,
       formData,
       httpOptions
     );

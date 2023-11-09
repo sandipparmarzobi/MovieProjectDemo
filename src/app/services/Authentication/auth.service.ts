@@ -48,6 +48,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('user');
+    this.route.navigate(['/']);
   }
 
   isAuthenticated(): boolean {

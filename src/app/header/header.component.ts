@@ -22,6 +22,8 @@ export class HeaderComponent implements OnInit {
   ) {
     this.IsLoggedIn = false;
   }
+  // Add this line to declare the property
+  isDropdownOpen: boolean = false;
   IsLoggedIn: boolean;
   isLoginButtonDisabled: boolean = false;
   isRegisterButtonDisabled: boolean = false;

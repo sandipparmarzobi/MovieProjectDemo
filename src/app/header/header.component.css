@@ -176,3 +176,11 @@ form .user-details .input-box{
 .cursor-pointer {
   cursor: pointer;
 }
+
+/* li[ngbDropdown] .dropdown-menu {
+  display: none;
+}
+
+li[ngbDropdown]:hover .dropdown-menu {
+  display: block;
+} */

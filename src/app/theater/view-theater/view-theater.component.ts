@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MovieService } from 'src/app/services/movie/movie.service';
+import { TheaterService } from 'src/app/services/theater/theater.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
-  selector: 'app-view',
-  templateUrl: './view.component.html',
-  styleUrls: ['./view.component.css'],
+  selector: 'app-view-theater',
+  templateUrl: './view-theater.component.html',
+  styleUrls: ['./view-theater.component.css'],
 })
-export class ViewComponent {
+export class ViewTheaterComponent {
   constructor(
-    public movieService: MovieService,
+    public theaterService: TheaterService,
     public toast: ToastService,
     private router: Router
   ) {}
@@ -18,18 +18,18 @@ export class ViewComponent {
   apiResponse: any;
   upcomingMovies: any;
   ngOnInit(): void {
-    this.LoadMovies();
+    debugger;
+    this.loadTheater();
   }
-  LoadMovies() {
-    this.movieService.getMovie().subscribe(
+  loadTheater() {
+    debugger;
+    this.theaterService.getTheater().subscribe(
       (response) => {
+        debugger;
         this.apiResponse = response;
         if (this.apiResponse != null) {
           if (this.apiResponse.statusString == 'Success') {
             this.data = this.apiResponse.data;
-            this.upcomingMovies = this.apiResponse.data[0];
-            console.log(this.data);
-            console.log(this.upcomingMovies);
           } else {
           }
         }
@@ -40,15 +40,15 @@ export class ViewComponent {
       }
     );
   }
-  deleteMovie(id: string) {
+  deleteTheater(id: string) {
     debugger;
-    this.movieService.deleteMovie(id).subscribe(
+    this.theaterService.deleteTheater(id).subscribe(
       (response) => {
         this.apiResponse = response;
         if (this.apiResponse != null) {
           if (this.apiResponse.statusString == 'Success') {
             this.toast.showSuccess('Success', 'Movie Deleted Successfully');
-            this.LoadMovies();
+            this.loadTheater();
           } else {
           }
         }
@@ -59,10 +59,5 @@ export class ViewComponent {
         console.error('Error from API:', error);
       }
     );
-  }
-  edit(id: string): void {
-    debugger;
-    // Navigate to the edit component with the 'id' parameter
-    this.router.navigate(['/edit-movie', id]);
   }
 }
