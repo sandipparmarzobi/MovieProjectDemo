@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class LoginModel {
   Email!: string;
   Password!: string;
@@ -13,21 +14,23 @@ export class UserRegisterModel {
 }
 
 export class MovieModel {
-  Title: string;
-  Genre: string;
-  Description: string;
-  Duration: string;
-  Director: string;
-  ReleaseDate: Date | null = null;
-  TrailerURL: string;
-  ImageFile: File | null = null;
+  id: string;
+  title: string;
+  genre: string;
+  description: string;
+  duration: string;
+  director: string;
+  releaseDate!: Date;
+  trailerURL: string;
+  imageFile: File | null = null;
 
   constructor() {
-    this.Title = '';
-    this.Genre = '';
-    this.Description = '';
-    this.Duration = '';
-    this.Director = '';
-    this.TrailerURL = '';
+    this.id = '';
+    this.title = '';
+    this.genre = '';
+    this.description = '';
+    this.duration = '';
+    this.director = '';
+    this.trailerURL = '';
   }
 }

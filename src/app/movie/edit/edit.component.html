@@ -1,15 +1,15 @@
 <div class="p-5">
-  <h3>Add Movie</h3>
+  <h3>Edit Movie</h3>
   <div class="content">
     <!-- ngNativeValidate -->
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onUpdate()">
       <div class="user-details">
         <div class="input-box">
           <span class="details">Title</span>
           <input
             type="text"
             [(ngModel)]="movieModel.title"
-            name="title"
+            name="Title"
             placeholder="Enter your movie title"
           />
         </div>
@@ -106,4 +106,3 @@
     </form>
   </div>
 </div>
-<app-view></app-view>

@@ -37,6 +37,7 @@ import { ViewComponent } from './movie/view/view.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { EditComponent } from './movie/edit/edit.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token'); // Change this to your token key
@@ -54,6 +55,7 @@ export function tokenGetter() {
     MyProfileComponent,
     AddComponent,
     ViewComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,

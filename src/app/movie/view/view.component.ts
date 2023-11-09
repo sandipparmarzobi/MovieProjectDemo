@@ -1,9 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginModel } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/Authentication/auth.service';
 import { CommonService } from 'src/app/services/common/common.service';
 import { ModalService } from 'src/app/services/model/modal.service';
+import { MovieService } from 'src/app/services/movie/movie.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
@@ -12,44 +14,60 @@ import { ToastService } from 'src/app/services/toast/toast.service';
   styleUrls: ['./view.component.css'],
 })
 export class ViewComponent {
-  IsLoggedIn: boolean;
   constructor(
-    public authService: AuthService,
-    private toast: ToastService,
-    private common: CommonService,
-    public modalService: ModalService
-  ) {
-    this.IsLoggedIn = false;
+    public movieService: MovieService,
+    public toast: ToastService,
+    private router: Router
+  ) {}
+  data: any;
+  apiResponse: any;
+  upcomingMovies: any;
+  ngOnInit(): void {
+    this.LoadMovies();
   }
-
-  loginModel: LoginModel = new LoginModel();
-  isLoginButtonDisabled: boolean | undefined;
-  onLogin() {
-    this.isLoginButtonDisabled = true;
-    this.authService.login(this.loginModel).subscribe({
-      next: (data: any) => {
-        if (data != null) {
-          if (data.statusString == 'Success') {
-            this.toast.showSuccess('Success', 'User Login successfully');
-            localStorage.setItem('user', data.data);
-            this.loginModel = new LoginModel();
-            this.modalService.closeModal();
-            this.IsLoggedIn = true;
+  LoadMovies() {
+    this.movieService.getMovie().subscribe(
+      (response) => {
+        this.apiResponse = response;
+        if (this.apiResponse != null) {
+          if (this.apiResponse.statusString == 'Success') {
+            this.data = this.apiResponse.data;
+            this.upcomingMovies = this.apiResponse.data[0];
+            console.log(this.data);
+            console.log(this.upcomingMovies);
           } else {
-            this.toast.showError('Login Error', data.message);
           }
-          this.isLoginButtonDisabled = false;
         }
       },
-      error: (httpError: HttpErrorResponse) => {
-        const errorValue: any | null = httpError.error;
-        const errorCode: number = httpError.status;
-        if (errorValue.errors) {
-          var message = this.common.getErrorMessage(errorValue.errors);
-          this.toast.showError('Login Error', message);
+      (error) => {
+        // Handle the error here, e.g., display an error message to the user
+        console.error('Error from API:', error);
+      }
+    );
+  }
+  deleteMovie(id: string) {
+    debugger;
+    this.movieService.deleteMovie(id).subscribe(
+      (response) => {
+        this.apiResponse = response;
+        if (this.apiResponse != null) {
+          if (this.apiResponse.statusString == 'Success') {
+            this.toast.showSuccess('Success', 'Movie Deleted Successfully');
+            this.LoadMovies();
+          } else {
+          }
         }
-        this.isLoginButtonDisabled = false;
       },
-    });
+      (error) => {
+        debugger;
+        // Handle the error here, e.g., display an error message to the user
+        console.error('Error from API:', error);
+      }
+    );
+  }
+  edit(id: string): void {
+    debugger;
+    // Navigate to the edit component with the 'id' parameter
+    this.router.navigate(['/edit-movie', id]);
   }
 }

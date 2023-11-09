@@ -1,28 +1,42 @@
-<form (ngSubmit)="onLogin()">
-  <div class="user-details">
-    <div class="input-box">
-      <span class="details">Email</span>
-      <input
-        type="text"
-        [(ngModel)]="loginModel.Email"
-        name="Email"
-        placeholder="Enter your email"
-        required
-      />
-    </div>
-    <div class="input-box">
-      <span class="details">Password</span>
-      <input
-        [(ngModel)]="loginModel.Password"
-        type="password"
-        name="Password"
-        placeholder="Enter your password"
-        required
-      />
-    </div>
-  </div>
-
-  <div class="button">
-    <input [disabled]="isLoginButtonDisabled" type="submit" value="Login" />
-  </div>
-</form>
+<div class="p-5">
+  <h3>View Movie</h3>
+  <br />
+  <table class="table table-bordered table-responsive movieTable">
+    <thead>
+      <tr>
+        <th scope="col" class="th-movie">Image</th>
+        <th scope="col">Title</th>
+        <th scope="col">Genre</th>
+        <th scope="col">Release Date</th>
+        <th scope="col">Description</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Director</th>
+        <th scope="col">Trailer URL</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td scope="row">
+          <img
+            [src]="'data:image/png;base64,' + item.imageBase64"
+            alt="Image"
+            width="100%"
+            height="100%"
+          />
+        </td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.genre }}</td>
+        <td>{{ item.releaseDate | date : "fullDate" }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.duration }}</td>
+        <td>{{ item.director }}</td>
+        <td>{{ item.trailerURL }}</td>
+        <td class="td-action">
+          <i class="fa fa-edit" [routerLink]="['/edit-movie', item.id]"></i>
+          <i class="fa fa-trash" (click)="deleteMovie(item.id)"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

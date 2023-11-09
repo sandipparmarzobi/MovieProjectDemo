@@ -9,24 +9,31 @@ import { MovieModel } from 'src/app/models/user.model';
 export class MovieService {
   constructor(private http: HttpClient) {}
 
+  getMovieById(id: string) {
+    return this.http.get('http://localhost:5084/api/Movie/GetById?id=' + id);
+  }
+
   getMovie() {
     return this.http.get('http://localhost:5084/api/Movie/Get');
   }
   saveMovie(movie: MovieModel): Observable<any> {
     debugger;
     const formData = new FormData();
-
+    // Parse the date string into a JavaScript Date object
+    const date = new Date(movie.releaseDate);
+    const isoString = date.toISOString();
     // Append the movie data as form fields
-    formData.append('Title', movie.Title);
-    formData.append('Genre', movie.Genre);
-    formData.append('Description', movie.Description);
-    formData.append('Duration', movie.Duration);
-    formData.append('Director', movie.Director);
-    formData.append('TrailerURL', movie.TrailerURL);
+    formData.append('Title', movie.title);
+    formData.append('Genre', movie.genre);
+    formData.append('Description', movie.description);
+    formData.append('Duration', movie.duration);
+    formData.append('ReleaseDate', isoString);
+    formData.append('Director', movie.director);
+    formData.append('TrailerURL', movie.trailerURL);
 
     // Append the image file if it exists
-    if (movie.ImageFile) {
-      formData.append('ImageFile', movie.ImageFile, movie.ImageFile.name);
+    if (movie.imageFile) {
+      formData.append('ImageFile', movie.imageFile, movie.imageFile.name);
     }
 
     var token = localStorage.getItem('user');
@@ -37,6 +44,51 @@ export class MovieService {
     };
     return this.http.post(
       'http://localhost:5084/api/Movie/Add',
+      formData,
+      httpOptions
+    );
+  }
+  deleteMovie(id: string): Observable<any> {
+    debugger;
+    var token = localStorage.getItem('user');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.delete(
+      'http://localhost:5084/api/Movie/Delete?id=' + id,
+      httpOptions
+    );
+  }
+  updateMovie(movie: MovieModel): Observable<any> {
+    debugger;
+    const formData = new FormData();
+    // Parse the date string into a JavaScript Date object
+    const date = new Date(movie.releaseDate);
+    const isoString = date.toISOString();
+    // Append the movie data as form fields
+    formData.append('Id', movie.id);
+    formData.append('Title', movie.title);
+    formData.append('Genre', movie.genre);
+    formData.append('Description', movie.description);
+    formData.append('Duration', movie.duration);
+    formData.append('ReleaseDate', isoString);
+    formData.append('Director', movie.director);
+    formData.append('TrailerURL', movie.trailerURL);
+
+    // Append the image file if it exists
+    if (movie.imageFile) {
+      formData.append('ImageFile', movie.imageFile, movie.imageFile.name);
+    }
+    var token = localStorage.getItem('user');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.put(
+      'http://localhost:5084/api/Movie/Update?id=' + movie.id,
       formData,
       httpOptions
     );
