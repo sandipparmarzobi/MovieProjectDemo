@@ -49,7 +49,7 @@
               >
                 <slide *ngFor="let item of data">
                   <div>
-                    <a href="" id="" class=""
+                    <a [routerLink]="['/view-movie-detail', item.id]"
                       ><div class="">
                         <div class=""></div>
                         <div

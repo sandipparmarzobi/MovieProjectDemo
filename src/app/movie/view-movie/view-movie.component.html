@@ -1,0 +1,108 @@
+<section class="sc-qswwm9-0 fWeSiX">
+  <div class="sc-qswwm9-1 hhpXm" [style.backgroundImage]="getBackgroundImage()">
+    <div class="sc-qswwm9-2 kSSnur">
+      <div class="sc-qswwm9-4 brstsF">
+        <section class="sc-bsek5f-0 hxpocV">
+          <div type="vertical" class="sc-echj48-0 bGEZCd">
+            <div
+              class="sc-echj48-6 kUURKV"
+              style="border-radius: 16px 16px 0px 0px; object-fit: cover"
+            >
+              <img
+                class="sc-echj48-5 hoyqAn"
+                [src]="'data:image/png;base64,' + movieData.imageBase64"
+                alt="Image"
+                width="100%"
+                height="100%"
+              />
+            </div>
+          </div>
+          <section type="vertical" class="sc-bsek5f-1 fGbICE">
+            <div class="sc-bsek5f-5 ePqEqS">
+              <span color="#FFFFFF" class="sc-bsek5f-4 hnDFhW"
+                >Releasing on
+                {{ movieData.releaseDate | date : "dd MMM, yyyy" }}</span
+              >&nbsp;
+            </div>
+          </section>
+        </section>
+      </div>
+
+      <div class="sc-qswwm9-5 ghYvew">
+        <h1 class="sc-qswwm9-6 jevoyi">{{ movieData.title }}</h1>
+        <section class="sc-meewg8-0 hnmbhY">
+          <div class="sc-meewg8-1 ksgpSJ">
+            <div class="sc-15uprjp-0 cwWsJP">
+              <svg width="32" height="32">
+                <use
+                  href="/chunks/icons/synopsis-icons-b8f0d7c9.svg#icon-interested"
+                ></use>
+              </svg>
+              <div>
+                <span class="sc-15uprjp-1 ReIPF">You</span
+                ><span class="sc-15uprjp-2 krxUg"
+                  >and 479.9K are interested</span
+                >
+              </div>
+            </div>
+            <div class="sc-meewg8-2 epHCjJ">
+              <div class="sc-meewg8-6 eKmtVQ">
+                <svg width="32" height="32">
+                  <use
+                    href="/chunks/icons/synopsis-icons-b8f0d7c9.svg#icon-success-tick"
+                  ></use>
+                </svg>
+                <div class="sc-meewg8-3 giNGrV">
+                  <span class="sc-meewg8-4 jiiEQG"
+                    >Your interest has been marked</span
+                  ><span class="sc-meewg8-5 gdqUSG"
+                    >We'll notify you when it releases</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sc-meewg8-1 dFyGoi">
+            <div class="sc-15uprjp-0 cwWsJP">
+              <svg width="32" height="32">
+                <use
+                  href="/chunks/icons/synopsis-icons-b8f0d7c9.svg#icon-interested"
+                ></use>
+              </svg>
+              <div>
+                <span class="sc-15uprjp-1 ReIPF">479.9K </span
+                ><span class="sc-15uprjp-2 krxUg">are interested</span>
+              </div>
+            </div>
+            <div class="sc-meewg8-2 epHCjJ">
+              <div class="sc-meewg8-3 bCRcFu">
+                <span class="sc-meewg8-4 jiiEQG">Releasing on 12 Nov, 2023</span
+                ><span class="sc-meewg8-5 gdqUSG"
+                  >Are you interested in watching this movie?</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="sc-2k6tnd-0 ehJgFO">
+          <div class="sc-2k6tnd-1 kfhxuo">
+            2h 35m<span class="sc-2k6tnd-5 juHVhn"> • </span
+            ><a
+              href="https://in.bookmyshow.com/explore/action-movies-ahmedabad"
+              class="sc-2k6tnd-2 bHMPWI"
+              >Action</a
+            ><span class="sc-2k6tnd-5 iYKkDH">,</span
+            ><a
+              href="https://in.bookmyshow.com/explore/thriller-movies-ahmedabad"
+              class="sc-2k6tnd-2 bHMPWI"
+              >Thriller</a
+            ><span class="sc-2k6tnd-5 juHVhn"> • </span>UA
+          </div>
+        </div>
+        <div class="button max-width">
+          <input type="submit" value="Book Ticket" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

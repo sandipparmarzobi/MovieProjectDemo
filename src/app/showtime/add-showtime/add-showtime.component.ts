@@ -1,42 +1,36 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MovieModel } from 'src/app/models/movie.model';
+import { ShowtimeModel } from 'src/app/models/showtime.model';
 import { CommonService } from 'src/app/services/common/common.service';
-import { MovieService } from 'src/app/services/movie/movie.service';
+import { ShowtimeService } from 'src/app/services/showtime/showtime.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
-  selector: 'app-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.css'],
+  selector: 'app-add-showtime',
+  templateUrl: './add-showtime.component.html',
+  styleUrls: ['./add-showtime.component.css'],
 })
-export class AddComponent {
+export class AddShowtimeComponent {
   constructor(
-    private movieService: MovieService,
+    private showtimeService: ShowtimeService,
     private toast: ToastService,
     private common: CommonService,
     private route: Router
   ) {}
 
-  movieModel: MovieModel = new MovieModel();
+  showtimeModel: ShowtimeModel = new ShowtimeModel();
   isButtonDisabled: boolean | undefined;
 
-  onFileChange(event: any) {
-    const fileList: FileList = event.target.files;
-    if (fileList.length > 0) {
-      this.movieModel.imageFile = fileList[0];
-    }
-  }
   onSubmit() {
     debugger;
     this.isButtonDisabled = true;
-    this.movieService.saveMovie(this.movieModel).subscribe({
+    this.showtimeService.saveShowtime(this.showtimeModel).subscribe({
       next: (data: any) => {
         if (data != null) {
           if (data.statusString == 'Success') {
-            this.toast.showSuccess('Movie', 'Movie Added successfully');
-            this.movieModel = new MovieModel();
+            this.toast.showSuccess('ShowTime', 'ShowTime Added successfully');
+            this.showtimeModel = new ShowtimeModel();
             this.route.navigate(['/add-movie']);
           } else {
             this.toast.showError('Movie Error', data.message);

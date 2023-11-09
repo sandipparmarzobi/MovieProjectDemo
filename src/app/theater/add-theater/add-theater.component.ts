@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { TheaterModel } from 'src/app/models/theater.model';
 import { CommonService } from 'src/app/services/common/common.service';
 import { TheaterService } from 'src/app/services/theater/theater.service';
@@ -14,7 +15,8 @@ export class AddTheaterComponent {
   constructor(
     private theaterService: TheaterService,
     private toast: ToastService,
-    private common: CommonService
+    private common: CommonService,
+    private route: Router
   ) {}
 
   theaterModel: TheaterModel = new TheaterModel();

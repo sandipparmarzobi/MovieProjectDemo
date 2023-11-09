@@ -1,0 +1,85 @@
+<div class="p-5">
+  <h3>Add Showtime</h3>
+  <div class="content">
+    <!-- ngNativeValidate -->
+    <form>
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details">Screen</span>
+          <input type="text" placeholder="Enter your Screen ex. A, B" />
+        </div>
+        <div class="input-box">
+          <span class="details">Ticket Price</span>
+          <input
+            type="number"
+            placeholder="Enter your Ticket Price ex. Rs.250/-"
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Start Date</span>
+          <input
+            type="text"
+            placeholder="Select Release Date"
+            class="form-control"
+            name="releaseDate"
+            [bsConfig]="{ dateInputFormat: 'DD-MMM-YYYY' }"
+            bsDatepicker
+            [placement]="'bottom'"
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">End Date</span>
+          <input
+            type="text"
+            placeholder="Select Release Date"
+            class="form-control"
+            name="releaseDate"
+            [bsConfig]="{ dateInputFormat: 'DD-MMM-YYYY' }"
+            bsDatepicker
+            [placement]="'bottom'"
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Theater</span>
+          <select class="form-control" name="genre">
+            <option value="">Select Theater</option>
+            <option value="Action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Drama">Drama</option>
+            <option value="ScienceFiction">ScienceFiction</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Horror">Horror</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Romance">Romance</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Animation">Animation</option>
+            <option value="War">War</option>
+            <option value="Documentary">Documentary</option>
+          </select>
+        </div>
+        <div class="input-box">
+          <span class="details">Movie</span>
+          <select class="form-control" name="genre">
+            <option value="">Select Movie</option>
+            <option value="Action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Drama">Drama</option>
+            <option value="ScienceFiction">ScienceFiction</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Horror">Horror</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Romance">Romance</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Animation">Animation</option>
+            <option value="War">War</option>
+            <option value="Documentary">Documentary</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="button max-width">
+        <input type="submit" value="Save" />
+      </div>
+    </form>
+  </div>
+</div>

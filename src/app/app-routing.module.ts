@@ -10,6 +10,10 @@ import { EditComponent } from './movie/edit/edit.component';
 import { AddTheaterComponent } from './theater/add-theater/add-theater.component';
 import { ViewTheaterComponent } from './theater/view-theater/view-theater.component';
 import { EditTheaterComponent } from './theater/edit-theater/edit-theater.component';
+import { AddShowtimeComponent } from './showtime/add-showtime/add-showtime.component';
+import { ViewShowtimeComponent } from './showtime/view-showtime/view-showtime.component';
+import { EditShowtimeComponent } from './showtime/edit-showtime/edit-showtime.component';
+import { ViewMovieComponent } from './movie/view-movie/view-movie.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -21,6 +25,10 @@ const routes: Routes = [
     path: 'edit-movie/:id',
     component: EditComponent,
     canActivate: [AuthService],
+  },
+  {
+    path: 'view-movie-detail/:id',
+    component: ViewMovieComponent,
   },
   {
     path: 'add-theater',
@@ -35,6 +43,21 @@ const routes: Routes = [
   {
     path: 'edit-theater/:id',
     component: EditTheaterComponent,
+    canActivate: [AuthService],
+  },
+  {
+    path: 'add-showtime',
+    component: AddShowtimeComponent,
+    canActivate: [AuthService],
+  },
+  {
+    path: 'view-showtime',
+    component: ViewShowtimeComponent,
+    canActivate: [AuthService],
+  },
+  {
+    path: 'edit-showtime/:id',
+    component: EditShowtimeComponent,
     canActivate: [AuthService],
   },
 ];

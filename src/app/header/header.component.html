@@ -98,10 +98,14 @@
             class="dropdown-menu dropdown-menu-end"
           >
             <li>
-              <a class="dropdown-item" href="#">Add ShowTime</a>
+              <a class="dropdown-item" [routerLink]="['/add-showtime']"
+                >Add ShowTime</a
+              >
             </li>
             <li>
-              <a class="dropdown-item" href="#">View ShowTime</a>
+              <a class="dropdown-item" [routerLink]="['/view-showtime']"
+                >View ShowTime</a
+              >
             </li>
           </ul>
         </li>
@@ -186,7 +190,11 @@
             </li>
           </ul>
         </li>
-        <li ngbDropdown class="nav-item">
+        <li
+          ngbDropdown
+          class="nav-item"
+          *ngIf="IsLoggedIn && authService.isAdmin()"
+        >
           <a
             class="nav-link"
             id="navbarDropdownMenuAvatar"

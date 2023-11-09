@@ -41,6 +41,10 @@ import { EditComponent } from './movie/edit/edit.component';
 import { AddTheaterComponent } from './theater/add-theater/add-theater.component';
 import { ViewTheaterComponent } from './theater/view-theater/view-theater.component';
 import { EditTheaterComponent } from './theater/edit-theater/edit-theater.component';
+import { AddShowtimeComponent } from './showtime/add-showtime/add-showtime.component';
+import { EditShowtimeComponent } from './showtime/edit-showtime/edit-showtime.component';
+import { ViewShowtimeComponent } from './showtime/view-showtime/view-showtime.component';
+import { ViewMovieComponent } from './movie/view-movie/view-movie.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token'); // Change this to your token key
@@ -62,6 +66,10 @@ export function tokenGetter() {
     AddTheaterComponent,
     ViewTheaterComponent,
     EditTheaterComponent,
+    AddShowtimeComponent,
+    EditShowtimeComponent,
+    ViewShowtimeComponent,
+    ViewMovieComponent,
   ],
   imports: [
     BrowserModule,
