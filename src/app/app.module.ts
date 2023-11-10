@@ -32,11 +32,12 @@ import { ToastsContainer } from 'src/app/Shared/toast/toasts-container/toasts-co
 import { JwtModule } from '@auth0/angular-jwt';
 import { MyProfileComponent } from './Account/my-profile/my-profile.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { AddComponent } from './movie/add/add.component';
-import { ViewComponent } from './movie/view/view.component';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { AddComponent } from './movie/add/add.component';
+import { ViewComponent } from './movie/view/view.component';
 import { EditComponent } from './movie/edit/edit.component';
 import { AddTheaterComponent } from './theater/add-theater/add-theater.component';
 import { ViewTheaterComponent } from './theater/view-theater/view-theater.component';
@@ -81,6 +82,7 @@ export function tokenGetter() {
     ModalModule.forRoot(),
     NgbModule,
     BsDatepickerModule.forRoot(),
+    TimepickerModule,
     HttpClientModule,
     ToastsContainer,
     BrowserAnimationsModule,

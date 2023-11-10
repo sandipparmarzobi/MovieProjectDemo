@@ -16,9 +16,22 @@ export class ShowtimeService {
   getShowtime() {
     return this.http.get('http://localhost:5084/api/ShowTime/Get');
   }
+
+  getShowtimeData() {
+    var token = localStorage.getItem('user');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.get(
+      'http://localhost:5084/api/ShowTime/GetShowTimeData',
+      httpOptions
+    );
+  }
   saveShowtime(showtime: ShowtimeModel): Observable<any> {
     debugger;
-
+    showtime.screen = showtime.screen.trim();
     var token = localStorage.getItem('user');
     const httpOptions = {
       headers: new HttpHeaders({

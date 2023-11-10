@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ShowtimeModel } from 'src/app/models/showtime.model';
 import { CommonService } from 'src/app/services/common/common.service';
@@ -11,7 +11,7 @@ import { ToastService } from 'src/app/services/toast/toast.service';
   templateUrl: './add-showtime.component.html',
   styleUrls: ['./add-showtime.component.css'],
 })
-export class AddShowtimeComponent {
+export class AddShowtimeComponent implements OnInit {
   constructor(
     private showtimeService: ShowtimeService,
     private toast: ToastService,
@@ -19,8 +19,42 @@ export class AddShowtimeComponent {
     private route: Router
   ) {}
 
+  ngOnInit(): void {
+    this.LoadShowTimeData();
+  }
+
   showtimeModel: ShowtimeModel = new ShowtimeModel();
   isButtonDisabled: boolean | undefined;
+
+  apiResponse: any;
+  movies: any;
+  theaters: any;
+
+  getBackgroundImage(imageBase64: string): string {
+    return `url('data:image/png;base64,${imageBase64}')`;
+  }
+
+  LoadShowTimeData() {
+    debugger;
+    this.showtimeService.getShowtimeData().subscribe(
+      (response) => {
+        this.apiResponse = response;
+        if (this.apiResponse != null) {
+          if (this.apiResponse.statusString == 'Success') {
+            console.log(this.apiResponse.data);
+            this.movies = this.apiResponse.data.movieList;
+            this.theaters = this.apiResponse.data.theaterList;
+          } else {
+            this.toast.showError('Showtime Error', this.apiResponse.message);
+          }
+        }
+      },
+      (error) => {
+        // Handle the error here, e.g., display an error message to the user
+        this.toast.showError('Error from API:', error);
+      }
+    );
+  }
 
   onSubmit() {
     debugger;

@@ -1,1 +1,38 @@
-<p>view-showtime works!</p>
+<div class="p-5">
+  <h3>View Movie</h3>
+  <br />
+  <table class="table table-bordered table-responsive movieTable">
+    <thead>
+      <tr>
+        <th scope="col" class="th-movie">Movie</th>
+        <th scope="col">Theater</th>
+        <th scope="col">Start Time</th>
+        <th scope="col">End Time</th>
+        <th scope="col">Description</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Director</th>
+        <th scope="col">Trailer URL</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{ item.screen }}</td>
+        <td>{{ item.theater }}</td>
+        <td>{{ item.startTime | date : "fullDate" }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.duration }}</td>
+        <td>{{ item.director }}</td>
+        <td>{{ item.trailerURL }}</td>
+        <td class="td-action">
+          <i
+            class="fa fa-edit"
+            tooltip="edit"
+            [routerLink]="['/edit-movie', item.id]"
+          ></i>
+          <i class="fa fa-trash" (click)="deleteMovie(item.id)"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

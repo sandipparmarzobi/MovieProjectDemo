@@ -44,6 +44,9 @@ export class EditComponent implements OnInit {
         this.data = response;
         if (this.data) {
           this.movieModel = this.data.data;
+          if (this.data.data.releaseDate) {
+            this.movieModel.releaseDate = new Date(this.data.data.releaseDate);
+          }
           this.cd.detectChanges();
         }
       },

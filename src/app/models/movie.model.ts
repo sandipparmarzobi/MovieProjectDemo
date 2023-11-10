@@ -4,7 +4,7 @@ export class MovieModel {
   description: string;
   duration: string;
   director: string;
-  releaseDate!: Date;
+  releaseDate: Date;
   trailerURL: string;
   imageFile: File | null = null;
 
@@ -15,5 +15,6 @@ export class MovieModel {
     this.duration = '';
     this.director = '';
     this.trailerURL = '';
+    this.releaseDate = new Date();
   }
 }

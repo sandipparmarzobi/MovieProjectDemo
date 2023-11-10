@@ -65,7 +65,7 @@ export class MovieService {
     debugger;
     const formData = new FormData();
     // Parse the date string into a JavaScript Date object
-    const date = new Date(movie.releaseDate);
+    const date = new Date(movie.releaseDate?.toString());
     const isoString = date.toISOString();
     // Append the movie data as form fields
     formData.append('Id', id);

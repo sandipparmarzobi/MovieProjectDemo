@@ -52,7 +52,6 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    debugger;
     const token = localStorage.getItem('user'); // Change this to your token key
     return !this.jwtHelper.isTokenExpired(token);
   }
@@ -76,7 +75,6 @@ export class AuthService {
     }
   }
   isAdmin(): boolean {
-    debugger;
     if (this.isAuthenticated()) {
       const userRole = this.getUserRole();
       if (userRole?.toLowerCase() === 'admin') {
@@ -89,7 +87,6 @@ export class AuthService {
   }
 
   getUserRole(): string | null {
-    debugger;
     const token = localStorage.getItem('user'); // Change this to your token key
 
     if (token) {
@@ -110,7 +107,6 @@ export class AuthService {
   }
 
   getUserName(): string | null {
-    debugger;
     const token = localStorage.getItem('user'); // Change this to your token key
 
     if (token) {
