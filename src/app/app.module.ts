@@ -46,6 +46,9 @@ import { AddShowtimeComponent } from './showtime/add-showtime/add-showtime.compo
 import { EditShowtimeComponent } from './showtime/edit-showtime/edit-showtime.component';
 import { ViewShowtimeComponent } from './showtime/view-showtime/view-showtime.component';
 import { ViewMovieComponent } from './movie/view-movie/view-movie.component';
+import { AddUserComponent } from './user/add-user/add-user.component';
+import { ViewUserComponent } from './user/view-user/view-user.component';
+import { EditUserComponent } from './user/edit-user/edit-user.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token'); // Change this to your token key
@@ -71,6 +74,9 @@ export function tokenGetter() {
     EditShowtimeComponent,
     ViewShowtimeComponent,
     ViewMovieComponent,
+    AddUserComponent,
+    ViewUserComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,

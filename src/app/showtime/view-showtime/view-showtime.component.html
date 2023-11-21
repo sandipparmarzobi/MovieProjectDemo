@@ -8,29 +8,28 @@
         <th scope="col">Theater</th>
         <th scope="col">Start Time</th>
         <th scope="col">End Time</th>
-        <th scope="col">Description</th>
-        <th scope="col">Duration</th>
-        <th scope="col">Director</th>
-        <th scope="col">Trailer URL</th>
+        <th scope="col">Screen</th>
+        <th scope="col">Ticket Price</th>
+        <th scope="col">Hide Show Time</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of data">
-        <td>{{ item.screen }}</td>
+        <td>{{ item.movie }}</td>
         <td>{{ item.theater }}</td>
-        <td>{{ item.startTime | date : "fullDate" }}</td>
-        <td>{{ item.description }}</td>
-        <td>{{ item.duration }}</td>
-        <td>{{ item.director }}</td>
-        <td>{{ item.trailerURL }}</td>
+        <td>{{ item.startTime }}</td>
+        <td>{{ item.endTime }}</td>
+        <td>{{ item.screen }}</td>
+        <td>{{ item.ticketPrice }}</td>
+        <td>{{ item.hideShowTime }}</td>
         <td class="td-action">
           <i
             class="fa fa-edit"
             tooltip="edit"
-            [routerLink]="['/edit-movie', item.id]"
+            [routerLink]="['/edit-showtime', item.id]"
           ></i>
-          <i class="fa fa-trash" (click)="deleteMovie(item.id)"></i>
+          <i class="fa fa-trash" (click)="deleteShowTime(item.id)"></i>
         </td>
       </tr>
     </tbody>

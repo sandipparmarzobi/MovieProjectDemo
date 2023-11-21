@@ -1,0 +1,87 @@
+<div class="p-5">
+  <h3>Add User</h3>
+  <div class="content">
+    <!-- ngNativeValidate -->
+    <form (ngSubmit)="onSubmit()">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details">Full Name</span>
+          <input
+            type="text"
+            [(ngModel)]="userRegisterModel.FullName"
+            name="FullName"
+            placeholder="Enter your name"
+            required
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Username</span>
+          <input
+            type="text"
+            [(ngModel)]="userRegisterModel.Username"
+            name="Username"
+            placeholder="Enter your username"
+            required
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Email</span>
+          <input
+            type="text"
+            [(ngModel)]="userRegisterModel.Email"
+            name="Email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Phone Number</span>
+          <input
+            type="text"
+            [(ngModel)]="userRegisterModel.Phone"
+            name="Phone"
+            placeholder="Enter your number"
+            required
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Password</span>
+          <input
+            type="password"
+            [(ngModel)]="userRegisterModel.Password"
+            name="Password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Confirm Password</span>
+          <input
+            type="text"
+            [(ngModel)]="userRegisterModel.ConfirmPassword"
+            name="ConfirmPassword"
+            placeholder="Confirm your password"
+            required
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Role</span>
+          <select
+            class="form-control"
+            name="role"
+            [(ngModel)]="userRegisterModel.role"
+          >
+            <option value="" selected>Select Option</option>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="button">
+        <input type="submit" [disabled]="isButtonDisabled" value="Add User" />
+      </div>
+    </form>
+  </div>
+</div>
+<app-view-user></app-view-user>

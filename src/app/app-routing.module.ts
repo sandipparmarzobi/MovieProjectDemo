@@ -14,6 +14,9 @@ import { AddShowtimeComponent } from './showtime/add-showtime/add-showtime.compo
 import { ViewShowtimeComponent } from './showtime/view-showtime/view-showtime.component';
 import { EditShowtimeComponent } from './showtime/edit-showtime/edit-showtime.component';
 import { ViewMovieComponent } from './movie/view-movie/view-movie.component';
+import { AddUserComponent } from './user/add-user/add-user.component';
+import { ViewUserComponent } from './user/view-user/view-user.component';
+import { EditUserComponent } from './user/edit-user/edit-user.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -58,6 +61,21 @@ const routes: Routes = [
   {
     path: 'edit-showtime/:id',
     component: EditShowtimeComponent,
+    canActivate: [AuthService],
+  },
+  {
+    path: 'add-user',
+    component: AddUserComponent,
+    canActivate: [AuthService],
+  },
+  {
+    path: 'view-user',
+    component: ViewUserComponent,
+    canActivate: [AuthService],
+  },
+  {
+    path: 'edit-user/:id',
+    component: EditUserComponent,
     canActivate: [AuthService],
   },
 ];

@@ -44,7 +44,7 @@ export class ShowtimeService {
       httpOptions
     );
   }
-  deleteMovie(id: string): Observable<any> {
+  deleteShowTime(id: string): Observable<any> {
     debugger;
     var token = localStorage.getItem('user');
     const httpOptions = {
@@ -57,11 +57,8 @@ export class ShowtimeService {
       httpOptions
     );
   }
-  updateMovie(id: string, showTime: ShowtimeModel): Observable<any> {
+  updateShowTime(id: string, showTime: ShowtimeModel): Observable<any> {
     debugger;
-    const formData = new FormData();
-    // Parse the date string into a JavaScript Date object
-
     var token = localStorage.getItem('user');
     const httpOptions = {
       headers: new HttpHeaders({
@@ -69,8 +66,8 @@ export class ShowtimeService {
       }),
     };
     return this.http.put(
-      'http://localhost:5084/api/Movie/Update?id=' + id,
-      formData,
+      'http://localhost:5084/api/ShowTime/Update?id=' + id,
+      showTime,
       httpOptions
     );
   }

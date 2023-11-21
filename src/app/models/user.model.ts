@@ -10,4 +10,5 @@ export class UserRegisterModel {
   ConfirmPassword!: string;
   FullName!: string;
   Phone!: Number;
+  role: string = '';
 }

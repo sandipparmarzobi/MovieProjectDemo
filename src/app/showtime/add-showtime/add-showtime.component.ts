@@ -41,7 +41,6 @@ export class AddShowtimeComponent implements OnInit {
         this.apiResponse = response;
         if (this.apiResponse != null) {
           if (this.apiResponse.statusString == 'Success') {
-            console.log(this.apiResponse.data);
             this.movies = this.apiResponse.data.movieList;
             this.theaters = this.apiResponse.data.theaterList;
           } else {

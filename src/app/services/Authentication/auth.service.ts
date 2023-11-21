@@ -46,6 +46,29 @@ export class AuthService {
     );
   }
 
+  registerAdminUser(userRegisterModel: UserRegisterModel): Observable<any> {
+    debugger;
+    var token = localStorage.getItem('user');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      'http://localhost:5084/api/Account/RegisterAdminUser',
+      userRegisterModel,
+      httpOptions
+    );
+  }
+  getUsers() {
+    var token = localStorage.getItem('user');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.get('http://localhost:5084/api/Account/Get', httpOptions);
+  }
   logout(): void {
     localStorage.removeItem('user');
     this.route.navigate(['/']);

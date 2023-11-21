@@ -1,1 +1,81 @@
-<p>edit-showtime works!</p>
+<div class="p-5">
+  <h3>Edit Showtime</h3>
+  <div class="content">
+    <!-- ngNativeValidate -->
+    <form (ngSubmit)="onUpdate()">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details">Movie</span>
+          <select
+            class="form-control"
+            name="movie"
+            [(ngModel)]="showtimeModel.movie"
+          >
+            <option value="">Select Movie</option>
+            <option *ngFor="let item of movies" [value]="item.id">
+              {{ item.title }}
+            </option>
+          </select>
+        </div>
+        <div class="input-box">
+          <span class="details">Theater</span>
+          <select
+            class="form-control"
+            name="theater"
+            [(ngModel)]="showtimeModel.theater"
+          >
+            <option value="">Select Theater</option>
+            <option *ngFor="let item of theaters" [value]="item.id">
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="input-box">
+          <span class="details">Start Time</span>
+          <timepicker
+            name="startTime"
+            [(ngModel)]="showtimeModel.startTime"
+          ></timepicker>
+        </div>
+        <div class="input-box">
+          <span class="details">End Time</span>
+          <timepicker
+            name="endTime"
+            [(ngModel)]="showtimeModel.endTime"
+          ></timepicker>
+        </div>
+        <div class="input-box">
+          <span class="details">Screen</span>
+          <input
+            type="text"
+            name="screen"
+            [(ngModel)]="showtimeModel.screen"
+            placeholder="Enter your Screen ex. A, B"
+          />
+        </div>
+        <div class="input-box">
+          <span class="details">Ticket Price</span>
+          <input
+            type="text"
+            name="ticketPrice"
+            [(ngModel)]="showtimeModel.ticketPrice"
+            placeholder="Enter your Ticket Price ex. Rs.250/-"
+          />
+        </div>
+      </div>
+      <div class="input-box">
+        <input
+          type="checkbox"
+          name="hideShowTime"
+          [(ngModel)]="showtimeModel.hideShowTime"
+        />
+        Hide Showtime
+      </div>
+
+      <div class="button max-width">
+        <input type="submit" value="Save" />
+      </div>
+    </form>
+  </div>
+</div>

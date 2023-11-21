@@ -1,6 +1,7 @@
 export class ShowtimeModel {
+  id: string = '';
   screen: string = '';
-  TicketPrice: string = '';
+  ticketPrice: string = '';
   startTime!: any;
   endTime!: any;
   movie: string = '';

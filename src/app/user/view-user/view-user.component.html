@@ -1,0 +1,37 @@
+<div class="p-5">
+  <h3>View Users</h3>
+  <br />
+  <table class="table table-bordered table-responsive movieTable">
+    <thead>
+      <tr>
+        <th scope="col" class="th-movie">Full Name</th>
+        <th scope="col">UserName</th>
+        <th scope="col">Registration Date</th>
+        <th scope="col">Email</th>
+        <th scope="col">Email Confirmed</th>
+        <th scope="col">Phone No</th>
+        <th scope="col">Role</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{ item.fullName }}</td>
+        <td>{{ item.username }}</td>
+        <td>{{ item.registrationDate }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.emailConfirmed }}</td>
+        <td>{{ item.phone }}</td>
+        <td>{{ item.role }}</td>
+        <td class="td-action">
+          <i
+            class="fa fa-edit"
+            tooltip="edit"
+            [routerLink]="['/edit-user', item.id]"
+          ></i>
+          <i class="fa fa-trash"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

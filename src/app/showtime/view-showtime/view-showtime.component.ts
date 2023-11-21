@@ -37,9 +37,9 @@ export class ViewShowtimeComponent {
       }
     );
   }
-  deleteMovie(id: string) {
+  deleteShowTime(id: string) {
     debugger;
-    this.showtimeService.deleteMovie(id).subscribe(
+    this.showtimeService.deleteShowTime(id).subscribe(
       (response) => {
         this.apiResponse = response;
         if (this.apiResponse != null) {
